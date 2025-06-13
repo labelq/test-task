@@ -1,0 +1,21 @@
+services:
+  test-task:
+    build: ./
+    command: ./wait-for-postgres.sh db ./test-task
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - DB_PASSWORD=qwerty
+      - DB_URL=postgres://postgres:qwerty@db:5432/postgres?sslmode=disable
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=qwerty
+    ports:
+      - 5432:5432
