@@ -15,11 +15,7 @@ cd test-task
 ```
 2.	Убедитесь, что у вас установлен и запущен PostgreSQL (настройки подключения в .env).
 
-3. Запустите сервер:
-```bash
-go run main.go
-```
-Или с использованием Docker (если есть docker-compose):
+3. Запустите сервер с использованием Docker:
 ```bash
 docker-compose up --build
 ```
